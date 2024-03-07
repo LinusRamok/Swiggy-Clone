@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    margin: 20px;
 }
 .body-container{
     margin-top: 20px;
@@ -16,6 +17,12 @@
 }
 .nav-container > li {
     margin: 10px;
+}
+.filter {
+    margin: 0 20px;
+}
+.btn-filter {
+    margin: 0 20px;
 }
 .restaurant-container {
     display: flex;
@@ -32,5 +39,5 @@
 }
 .res-card-image {
     height: 300px;
-    width: 290px;
+    width: 100%;
 }
