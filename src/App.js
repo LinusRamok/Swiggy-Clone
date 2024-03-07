@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Header from './components/Header'
-import Home from './components/Home'
+import Header from './components/Header/Header'
+import Home from './components/Home/Home'
 import About from './components/About'
 import Contact from './components/Contact'
 import Error from './components/Error'
@@ -12,32 +12,34 @@ const App = () => {
     return (
         <div className='main'>
             <Header />
-            <Outlet/>
+            <div className='body w-[70%] mx-[15%]'>
+                <Outlet />
+            </div>
         </div>
     )
 }
 
 const router = createBrowserRouter([
     {
-        path:'/',
+        path: '/',
         element: <App />,
-        errorElement:<Error/>,
-        children:[
+        errorElement: <Error />,
+        children: [
             {
-                path:'/',
-                element:<Home/>
+                path: '/',
+                element: <Home />
             },
             {
-                path:'/about',
-                element:<About/>
+                path: '/about',
+                element: <About />
             },
             {
-                path:'/contact',
-                element:<Contact/>
+                path: '/contact',
+                element: <Contact />
             },
             {
-                path:'/restaurant/:resId',
-                element:<RestaurantMenu/>
+                path: '/restaurant/:resId',
+                element: <RestaurantMenu />
             }
         ]
 
@@ -46,4 +48,4 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-root.render(<RouterProvider router={router}/>)
+root.render(<RouterProvider router={router} />)

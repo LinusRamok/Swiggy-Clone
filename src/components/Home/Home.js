@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import RestaurantCard from './RestaurantCard'
-import useRestaurants from '../Utils/useRestaurants'
+import RestaurantCard from '../RestaurantCard'
+import useRestaurants from '../../Utils/useRestaurants'
 import { Link } from 'react-router-dom'
+import classNames from 'classnames'
+import { ShimmerPostList } from "react-shimmer-effects";
 
 const Home = () => {
 
@@ -14,11 +16,14 @@ const Home = () => {
     }, [restaurantList])
 
     if (restaurantList.length === 0) {
-        return <h1>loading..</h1>
+        return (
+            <ShimmerPostList postStyle="STYLE_FOUR" col={4} row={3} gap={30} />
+        );
     }
 
     return (
-        <div className='body-container'>
+            
+            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
             <div className='filter'>
                 <input className='input-filter' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}></input>
                 <button className='btn-filter'
@@ -31,10 +36,13 @@ const Home = () => {
                     }
                     }>filter</button>
             </div>
-            <div className='restaurant-container'>
-                {filteredRestaurantList.map((restaurant) => <Link to={'/restaurant/'+restaurant.info.id} key={restaurant.info.id}> <RestaurantCard  restaurant={restaurant.info} /></Link>)}
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900">Restaurants with online food delivery</h2>
+                <div className='restaurant-card-container mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
+                    {filteredRestaurantList.map((restaurant) => <Link to={'/restaurant/' + restaurant.info.id} key={restaurant.info.id}>
+                        <RestaurantCard restaurant={restaurant.info} />
+                    </Link>)}
+                </div>
             </div>
-        </div>
     )
 }
 
