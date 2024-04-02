@@ -1,1 +1,1 @@
-Creating a swiggy clone appp for practicing react
+Creating a food delivery app for practicing react
